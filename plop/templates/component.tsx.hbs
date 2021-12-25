@@ -1,0 +1,44 @@
+import React{{#if validation}}, { useCallback, useEffect }{{/if}} from 'react';
+import { Text, View } from 'native-base';
+import { useTranslation } from 'react-i18next';
+{{#if hook}}
+import { FormProvider, useForm } from 'react-hook-form';
+{{/if}}
+{{#if validation}}
+import use{{pascalCase name}} from '@src/hooks/use{{pascalCase name}}';
+{{/if}}
+{{#if validation}}
+import useYupResolver from '@src/hooks/useYupResolver';
+{{/if}}
+import { Props } from './props';
+import styles from './styles';
+{{#if validation}}
+import { {{camelCase name}}FormSchema, {{pascalCase name}}FormValue } from './validation';
+{{/if}}
+
+const {{pascalCase name}} = (props: Props) => {
+  const {t} = useTranslation();
+  {{#if hook}}
+  const {{camelCase name}} = use{{pascalCase name}}();
+  {{/if}}
+  {{#if validation}}
+  const resolver = useYupResolver({{camelCase name}}FormSchema);
+  const methods = useForm({resolver});
+  const {handleSubmit, reset} = methods;
+
+  useEffect(() => {
+    const initialValue: {{pascalCase name}}FormValue = {};
+    reset(initialValue);
+  }, [reset]);
+
+  const onSubmit = useCallback(async (values: {{pascalCase name}}FormValue) => {}, []);
+  {{/if}}
+
+  return (
+    <View>
+      <Text>{{pascalCase name}}</Text>
+    </View>
+  );
+};
+
+export default {{pascalCase name}};

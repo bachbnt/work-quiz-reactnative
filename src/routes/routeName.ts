@@ -1,0 +1,9 @@
+export enum RouteName {
+  SPLASH = 'SPLASH',
+  SIGN_IN = 'SIGN_IN',
+  SIGN_UP = 'SIGN_UP',
+  FORGOT_PASSWORD = 'FORGOT_PASSWORD',
+  HOME = 'HOME',
+  ACCOUNT_SETTING = 'ACCOUNT_SETTING',
+  QUIZ = 'QUIZ'
+}
