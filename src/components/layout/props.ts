@@ -7,4 +7,5 @@ export interface Props {
   disableBack?: boolean;
   style?: StyleProp<ViewStyle>;
   safeViewStyle?: StyleProp<ViewStyle>;
+  menu?: boolean;
 }

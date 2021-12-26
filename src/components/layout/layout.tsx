@@ -12,13 +12,16 @@ const Layout = (props: Props) => {
     style,
     title,
     main,
-    disableBack = false
+    disableBack = false,
+    menu
   } = props;
 
   return (
     <SafeAreaView style={[styles.safeView, safeViewStyle]}>
       <Container style={[styles.container, style]}>
-        {!!main && <Header disableBack={disableBack} title={title} />}
+        {!!main && (
+          <Header menu={menu} disableBack={disableBack} title={title} />
+        )}
         <ScrollView contentContainerStyle={styles.scrollView}>
           {children}
         </ScrollView>

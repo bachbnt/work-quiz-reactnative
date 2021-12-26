@@ -13,7 +13,7 @@ const data = [
 
 const Home = (props: Props) => {
   return (
-    <Layout main disableBack title={'Trang Chủ'}>
+    <Layout main menu title={'Trang Chủ'}>
       <FlatList
         numColumns={2}
         data={data}

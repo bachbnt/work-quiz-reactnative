@@ -57,16 +57,16 @@ const Drawer = (props: Props) => {
         </Text>
       </View>
 
-      <View style={styles.profile}>
+      {/* <View style={styles.profile}>
         <NativeListItem avatar>
           <Avatar image={userReducer?.avatar} />
           <Text style={styles.userName} numberOfLines={1}>
             {`${userReducer?.firstName} ${userReducer?.lastName}`}
           </Text>
         </NativeListItem>
-      </View>
+      </View> */}
 
-      <ScrollView>
+      {/* <ScrollView>
         <List>
           {routes.map((route) => (
             <ListItem
@@ -80,7 +80,7 @@ const Drawer = (props: Props) => {
             />
           ))}
         </List>
-      </ScrollView>
+      </ScrollView> */}
 
       <Button style={styles.signOutButton} onPress={handleSignOut}>
         <Text>{upperCase(t(i18nKey.sign_out))}</Text>

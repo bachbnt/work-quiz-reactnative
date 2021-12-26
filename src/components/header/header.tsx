@@ -34,6 +34,10 @@ const Header = (props: Props) => {
 
   const { icon, onPressHandler } =
     useMemo(() => {
+      if (disableBack) {
+        return {};
+      }
+
       if (menu) {
         return {
           icon: 'menu',
@@ -46,10 +50,6 @@ const Header = (props: Props) => {
           icon: leftIcon,
           onPressHandler: leftPress
         };
-      }
-
-      if (disableBack) {
-        return {};
       }
 
       return {
