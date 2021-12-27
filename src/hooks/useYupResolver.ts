@@ -12,7 +12,7 @@ const useYupResolver = (validationSchema: ObjectSchema<any>) =>
           values,
           errors: {}
         };
-      } catch (errors) {
+      } catch (errors: any) {
         return {
           values: {},
           errors: errors.inner.reduce(

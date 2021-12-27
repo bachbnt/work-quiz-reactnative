@@ -30,8 +30,8 @@ const SignIn = (props: Props) => {
 
   useEffect(() => {
     const initialValue: SignInFormValue = {
-      email: 'bach@gmail.com',
-      password: 'Abc@123'
+      email: 'truongdaitin98@gmail.com',
+      password: '123456@Aa'
     };
     reset(initialValue);
   }, [reset]);

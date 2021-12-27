@@ -4,14 +4,9 @@ import Icon from '@src/components/icon';
 import { Props } from './props';
 import styles from './styles';
 import { TouchableOpacity } from 'react-native';
-import { navigate } from '@src/routes/navigation';
 
 const DashboardCard = (props: Props) => {
-  const { title, icon, screen, style } = props;
-
-  const onPress = () => {
-    navigate(screen);
-  };
+  const { title, icon, style, onPress } = props;
 
   return (
     <TouchableOpacity onPress={onPress}>

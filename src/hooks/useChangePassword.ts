@@ -19,7 +19,7 @@ const useChangePassword = () => {
           password
         });
         toast.success(t(i18nKey.success));
-      } catch (error) {
+      } catch (error: any) {
         toast.error(t(error.message));
       } finally {
         dispatch({ type: HIDE_SPINNER });

@@ -15,7 +15,7 @@ const useForgotPassword = () => {
       dispatch({ type: SHOW_SPINNER });
       try {
         await auth.forgotPassword({ email });
-      } catch (error) {
+      } catch (error: any) {
         toast.error(t(error.message));
       } finally {
         dispatch({ type: HIDE_SPINNER });

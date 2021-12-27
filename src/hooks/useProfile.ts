@@ -21,7 +21,7 @@ const useProfile = () => {
     try {
       const response = await userService.getProfile({});
       dispatch({ type: SET_USER, payload: response.data });
-    } catch (error) {
+    } catch (error: any) {
       toast.error(t(error.message));
     } finally {
       dispatch({ type: HIDE_SPINNER });

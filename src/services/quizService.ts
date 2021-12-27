@@ -1,5 +1,5 @@
 class QuizService {
-  async getQuestions(request: any): Promise<any> {
+  async fetchQuiz(request: any): Promise<any> {
     return [
       {
         id: 'q1',
@@ -37,9 +37,7 @@ class QuizService {
     ];
   }
 
-  async postAnswers(request: any): Promise<any> {}
-
-  async getResult(request: any): Promise<any> {}
+  async submitQuiz(request: any): Promise<any> {}
 }
 
 export const quizService = new QuizService();

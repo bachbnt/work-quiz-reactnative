@@ -26,7 +26,7 @@ const useSignUp = () => {
         await auth.signUp({ email, firstName, lastName, password });
         await getProfile();
         reset(RouteName.HOME);
-      } catch (error) {
+      } catch (error: any) {
         toast.error(t(error.message));
       } finally {
         dispatch({ type: HIDE_SPINNER });

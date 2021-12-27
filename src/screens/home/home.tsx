@@ -5,6 +5,7 @@ import Layout from '@src/components/layout';
 import { FlatList } from 'react-native';
 import DashboardCard from '@src/components/dashboardCard';
 import { RouteName } from '@src/routes/routeName';
+import { navigate } from '@src/routes/navigation';
 
 const data = [
   { title: 'Khảo Sát', icon: 'menu', screen: RouteName.QUIZ },
@@ -12,6 +13,14 @@ const data = [
 ];
 
 const Home = (props: Props) => {
+  const handlePress = (screen: string) => {
+    if (screen === RouteName.QUIZ) {
+      navigate(screen, { type: 1 });
+    } else {
+      navigate(screen);
+    }
+  };
+
   return (
     <Layout main menu title={'Trang Chủ'}>
       <FlatList
@@ -23,7 +32,9 @@ const Home = (props: Props) => {
             key={item.title}
             title={item.title}
             icon={item.icon}
-            screen={item.screen}
+            onPress={() => {
+              handlePress(item.screen);
+            }}
           />
         )}
       />

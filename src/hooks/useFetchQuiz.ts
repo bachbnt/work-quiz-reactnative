@@ -6,7 +6,7 @@ import { toast } from '@src/utils/toast';
 import useAuth from './useAuth';
 import { quizService } from '@src/services/quizService';
 
-const useQuiz = () => {
+const useFetchQuiz = (type: number) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [data, setData] = useState<any[]>([]);
@@ -19,9 +19,9 @@ const useQuiz = () => {
 
     dispatch({ type: SHOW_SPINNER });
     try {
-      const response = await quizService.getQuestions({});
+      const response = await quizService.fetchQuiz({});
       setData(response);
-    } catch (error) {
+    } catch (error: any) {
       toast.error(t(error.message));
     } finally {
       dispatch({ type: HIDE_SPINNER });
@@ -35,4 +35,4 @@ const useQuiz = () => {
   return { data, getData };
 };
 
-export default useQuiz;
+export default useFetchQuiz;

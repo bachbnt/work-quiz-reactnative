@@ -35,11 +35,11 @@ class AuthService {
     return !!token;
   }
 
-  // async forgotPassword(
-  //   request: ForgotPasswordRequest
-  // ): Promise<ForgotPasswordResponse> {
-  //   return {};
-  // }
+  async forgotPassword(
+    request: ForgotPasswordRequest
+  ): Promise<ForgotPasswordResponse> {
+    return { status: 200 };
+  }
 }
 
 export const authService = new AuthService();

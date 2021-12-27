@@ -6,5 +6,5 @@ export type RouteParams = {
   [RouteName.FORGOT_PASSWORD]: undefined;
   [RouteName.HOME]: undefined;
   [RouteName.ACCOUNT_SETTING]: undefined;
-  [RouteName.QUIZ]: undefined;
+  [RouteName.QUIZ]: { type: number };
 };
