@@ -6,4 +6,5 @@ export interface Props {
   defaultValue: any;
   onValueChanged?: (value: any) => void;
   disable?: boolean;
+  showPoint?: boolean;
 }

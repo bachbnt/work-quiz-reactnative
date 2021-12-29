@@ -8,22 +8,22 @@ import { Alert, AlertButton } from 'react-native';
 import { goBack, navigate } from '@src/routes/navigation';
 import { RouteName } from '@src/routes/routeName';
 
-const useSubmitQuiz = (type: number) => {
+const useSubmitQuiz = (categoryId: number) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const alertButtons = useCallback((): AlertButton[] | undefined => {
-    if (type === 1) {
+    if (categoryId === 1) {
       return [
         {
           text: 'Next',
           onPress: () => {
             goBack();
-            navigate(RouteName.QUIZ, { type: 2 });
+            navigate(RouteName.QUIZ);
           }
         }
       ];
-    } else if (type === 2) {
+    } else if (categoryId === 2) {
       return [
         {
           text: 'OK',
@@ -33,14 +33,20 @@ const useSubmitQuiz = (type: number) => {
         }
       ];
     }
-  }, [type]);
+  }, [categoryId]);
 
   const submitQuiz = useCallback(
-    async (params: string[]) => {
+    async (params: any[]) => {
       dispatch({ type: SHOW_SPINNER });
       try {
-        const response = await quizService.submitQuiz({});
-        Alert.alert('50 diem', 'ban lam rat tot', alertButtons());
+        const response = await quizService.submitQuiz(params);
+        if (response.status === 200) {
+          Alert.alert(
+            `${response.sumPoint} điểm`,
+            response.message,
+            alertButtons()
+          );
+        }
       } catch (error: any) {
         toast.error(t(error.message));
       } finally {

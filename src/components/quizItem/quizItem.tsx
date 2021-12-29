@@ -5,18 +5,19 @@ import styles from './styles';
 import RadioGroup from '../radioGroup';
 
 const QuizItem = (props: Props) => {
-  const { item, ...others } = props;
+  const { item, onValueChanged, ...others } = props;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{item.question}</Text>
+      <Text style={styles.title}>{item.content}</Text>
       <RadioGroup
         key={item.id}
         options={item.answers}
-        mapLabel={(i) => i.answer}
+        mapLabel={(i) => i.content}
         mapValue={(i) => i.id}
         mapSubLabel={(i) => `+${i.point}`}
         defaultValue={item.answers[0].id}
+        onValueChanged={(value) => onValueChanged?.(item.id, value)}
         {...others}
       />
     </View>

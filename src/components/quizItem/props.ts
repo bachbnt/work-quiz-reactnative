@@ -1,5 +1,6 @@
 export interface Props {
   item: any;
   disable?: boolean;
-  onValueChanged?: (value: any) => void;
+  onValueChanged?: (questionId: any, answerId: any) => void;
+  showPoint?: boolean;
 }

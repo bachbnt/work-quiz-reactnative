@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Props } from './props';
 import styles from './styles';
 import useFetchQuiz from '@src/hooks/useFetchQuiz';
@@ -13,28 +13,43 @@ import { RouteParams } from '@src/routes/routeParams';
 import { RouteName } from '@src/routes/routeName';
 
 const Quiz = (props: Props) => {
-  const { params } = useRoute<RouteProp<RouteParams, RouteName.QUIZ>>();
-  const { data: quizData } = useFetchQuiz(params.type);
-  const { submitQuiz } = useSubmitQuiz(params.type);
-  const [data, setData] = useState<any>([]);
+  const { data: fetchedData, categoryId } = useFetchQuiz();
+  const { submitQuiz } = useSubmitQuiz(categoryId);
+  const [submittedData, setSubmittedData] = useState<any[]>([]);
+  const [showPoint, setShowPoint] = useState(false);
+
+  useEffect(() => {
+    const defaultData = fetchedData.map((element) => {
+      return { questionId: element.id, answerId: element.answers[0].id };
+    });
+    setSubmittedData(defaultData);
+  }, [fetchedData]);
 
   const onSubmit = () => {
-    submitQuiz(data);
+    setShowPoint(true);
+    submitQuiz(submittedData);
   };
 
-  const onValueChanged = (value: any) => {
-    setData([...data, value]);
-
-    console.log(data);
+  const onValueChanged = (questionId: any, answerId: any) => {
+    const updatedData = submittedData.map((element) => {
+      return element.questionId === questionId
+        ? { ...element, answerId }
+        : element;
+    });
+    setSubmittedData(updatedData);
   };
 
   return (
-    <Layout main title={'Khảo Sát'}>
+    <Layout main title={`Khảo Sát ${categoryId}`}>
       <FlatList
-        data={quizData}
+        data={fetchedData}
         key="quiz"
         renderItem={({ item }) => (
-          <QuizItem item={item} onValueChanged={onValueChanged} />
+          <QuizItem
+            item={item}
+            onValueChanged={onValueChanged}
+            showPoint={showPoint}
+          />
         )}
       />
       <Button style={styles.submitButton} onPress={onSubmit}>

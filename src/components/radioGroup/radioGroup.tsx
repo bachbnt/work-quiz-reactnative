@@ -13,6 +13,7 @@ const RadioGroup = (props: Props) => {
     defaultValue,
     onValueChanged,
     disable,
+    showPoint = false,
     ...others
   } = props;
 
@@ -51,7 +52,7 @@ const RadioGroup = (props: Props) => {
             !disable && onSelected(mapValue(item));
           }}
           label={mapLabel?.(item) || mapValue(item)}
-          subLabel={mapSubLabel?.(item)}
+          subLabel={showPoint ? mapSubLabel?.(item) : undefined}
           {...others}
         />
       )}

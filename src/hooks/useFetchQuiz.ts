@@ -6,10 +6,11 @@ import { toast } from '@src/utils/toast';
 import useAuth from './useAuth';
 import { quizService } from '@src/services/quizService';
 
-const useFetchQuiz = (type: number) => {
+const useFetchQuiz = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [data, setData] = useState<any[]>([]);
+  const [categoryId, setCategoryId] = useState(1);
   const auth = useAuth();
 
   const getData = useCallback(async () => {
@@ -20,7 +21,11 @@ const useFetchQuiz = (type: number) => {
     dispatch({ type: SHOW_SPINNER });
     try {
       const response = await quizService.fetchQuiz({});
-      setData(response);
+      if (response.status === 200) {
+        setData(response.data);
+        setCategoryId(response.categoryId);
+      }
+      console.log(response.data);
     } catch (error: any) {
       toast.error(t(error.message));
     } finally {
@@ -32,7 +37,7 @@ const useFetchQuiz = (type: number) => {
     getData();
   }, [getData]);
 
-  return { data, getData };
+  return { data, categoryId, getData };
 };
 
 export default useFetchQuiz;

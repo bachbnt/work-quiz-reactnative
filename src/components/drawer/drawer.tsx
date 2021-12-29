@@ -57,38 +57,9 @@ const Drawer = (props: Props) => {
         </Text>
       </View>
 
-      {/* <View style={styles.profile}>
-        <NativeListItem avatar>
-          <Avatar image={userReducer?.avatar} />
-          <Text style={styles.userName} numberOfLines={1}>
-            {`${userReducer?.firstName} ${userReducer?.lastName}`}
-          </Text>
-        </NativeListItem>
-      </View> */}
-
-      {/* <ScrollView>
-        <List>
-          {routes.map((route) => (
-            <ListItem
-              key={route.name}
-              title={route.title}
-              left={route.icon}
-              selected={route.name === currentRoute}
-              onPress={() => {
-                handleNavigate(route.name);
-              }}
-            />
-          ))}
-        </List>
-      </ScrollView> */}
-
       <Button style={styles.signOutButton} onPress={handleSignOut}>
         <Text>{upperCase(t(i18nKey.sign_out))}</Text>
       </Button>
-
-      <View style={styles.container}>
-        <Footer />
-      </View>
     </SafeAreaView>
   );
 };

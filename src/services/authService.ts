@@ -1,4 +1,3 @@
-import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Key } from '@src/constants/key';
 import { SignInRequest, SignInResponse } from '@src/models/reqres/signIn';
