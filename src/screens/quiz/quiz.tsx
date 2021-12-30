@@ -40,7 +40,7 @@ const Quiz = (props: Props) => {
   };
 
   return (
-    <Layout main title={`Khảo Sát ${categoryId}`}>
+    <Layout main title={`Khảo Sát ${categoryId === 1 ? 1 : 2}`}>
       <FlatList
         data={fetchedData}
         key="quiz"

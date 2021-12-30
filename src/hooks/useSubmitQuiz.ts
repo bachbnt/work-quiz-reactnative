@@ -23,7 +23,7 @@ const useSubmitQuiz = (categoryId: number) => {
           }
         }
       ];
-    } else if (categoryId === 2) {
+    } else {
       return [
         {
           text: 'OK',
