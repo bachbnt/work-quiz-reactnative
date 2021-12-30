@@ -8,9 +8,6 @@ import QuizItem from '@src/components/quizItem';
 import { FlatList } from 'react-native';
 import Button from '@src/components/button';
 import { Text } from 'native-base';
-import { RouteProp, useRoute } from '@react-navigation/native';
-import { RouteParams } from '@src/routes/routeParams';
-import { RouteName } from '@src/routes/routeName';
 
 const Quiz = (props: Props) => {
   const { data: fetchedData, categoryId } = useFetchQuiz();
@@ -26,7 +23,7 @@ const Quiz = (props: Props) => {
   }, [fetchedData]);
 
   const onSubmit = () => {
-    setShowPoint(true);
+    // setShowPoint(true);
     submitQuiz(submittedData);
   };
 
